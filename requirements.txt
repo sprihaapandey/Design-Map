@@ -1,0 +1,22 @@
+# Core ML / embeddings
+torch>=2.2
+open_clip_torch>=2.24
+transformers>=4.40
+numpy
+scikit-learn
+pillow
+
+# Data / labeling
+pandas
+tqdm
+
+# Scraping
+playwright
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Utils
+python-dotenv
