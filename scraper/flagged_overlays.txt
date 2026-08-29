@@ -1,0 +1,2 @@
+scrape_loewe-com	0.0228	an error page such as 404, access denied, or site not found
+hf_dw-com	0.0062	an error page such as 404, access denied, or site not found

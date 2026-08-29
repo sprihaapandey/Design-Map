@@ -1,0 +1,311 @@
+url,brand,style_tag
+https://linear.app,Linear,minimalism
+https://arc.net,Arc,minimalism
+https://stripe.com,Stripe,minimalism
+https://apple.com,Apple,minimalism
+https://muji.com,Muji,minimalism
+https://aesop.com,Aesop,minimalism
+https://everlane.com,Everlane,minimalism
+https://basecamp.com,Basecamp,minimalism
+https://superhuman.com,Superhuman,minimalism
+https://raycast.com,Raycast,minimalism
+https://oura.com,Oura,minimalism
+https://cash.app,Cash App,minimalism
+https://things.app,Things,minimalism
+https://teenageengineering.com,Teenage Engineering,minimalism
+https://kinfolk.com,Kinfolk,minimalism
+https://cos.com,COS,minimalism
+https://helm.co,Helm,minimalism
+https://another.co,Another,minimalism
+https://usewaypoint.com,Waypoint,minimalism
+https://campsite.co,Campsite,minimalism
+https://balenciaga.com,Balenciaga,brutalism_neobrutalism
+https://gumroad.com,Gumroad,brutalism_neobrutalism
+https://are.na,Are.na,brutalism_neobrutalism
+https://mschf.com,MSCHF,brutalism_neobrutalism
+https://blackbirdspyplane.com,Blackbird Spyplane,brutalism_neobrutalism
+https://vetements.ch,Vetements,brutalism_neobrutalism
+https://kikk.be,KIKK Festival,brutalism_neobrutalism
+https://brutalistwebsites.com,Brutalist Websites,brutalism_neobrutalism
+https://n-o-o-o.com,Noooo Studio,brutalism_neobrutalism
+https://bloombergquint.com,BloombergQuint,brutalism_neobrutalism
+https://hardbreak.design,Hardbreak,brutalism_neobrutalism
+https://ader.dev,Ader Error,brutalism_neobrutalism
+https://prada.com,Prada,brutalism_neobrutalism
+https://staffonly.website,Staffonly,brutalism_neobrutalism
+https://virgil-abloh.com,Virgil Abloh,brutalism_neobrutalism
+https://pentagram.com,Pentagram,swiss_style
+https://vitsoe.com,Vitsoe,swiss_style
+https://studiodumbar.com,Studio Dumbar,swiss_style
+https://nzz.ch,NZZ,swiss_style
+https://ikea.com,IKEA,swiss_style
+https://fonts.google.com,Google Fonts,swiss_style
+https://moma.org,MoMA,swiss_style
+https://a2-type.co.uk,A2 Type,swiss_style
+https://experimentaljetset.nl,Experimental Jetset,swiss_style
+https://norm.ch,NORM,swiss_style
+https://praxis-mag.ch,Praxis,swiss_style
+https://onlab.ch,Onlab,swiss_style
+https://kontrapunkt.com,Kontrapunkt,swiss_style
+https://baseldesign.ch,Basel School,swiss_style
+https://swissinfo.ch,Swissinfo,swiss_style
+https://kontor.studio,Kontor Studio,constructivism
+https://bureau-borsche.com,Bureau Borsche,constructivism
+https://studiofeixen.ch,Studio Feixen,constructivism
+https://metahaven.net,Metahaven,constructivism
+https://a2swhk.co.uk,A2/SW/HK,constructivism
+https://non-format.com,Non-Format,constructivism
+https://build.co.uk,Build,constructivism
+https://blast-radius.com,Blast Radius,constructivism
+https://socialdesignmagazine.com,Social Design Magazine,constructivism
+https://newmuseum.org,New Museum,constructivism
+https://nytimes.com,The New York Times,editorial
+https://theatlantic.com,The Atlantic,editorial
+https://theguardian.com,The Guardian,editorial
+https://newyorker.com,The New Yorker,editorial
+https://monocle.com,Monocle,editorial
+https://cereal-magazine.com,Cereal Magazine,editorial
+https://itsnicethat.com,It's Nice That,editorial
+https://eyeondesign.aiga.org,AIGA Eye on Design,editorial
+https://fastcompany.com,Fast Company,editorial
+https://wired.com,Wired,editorial
+https://vox.com,Vox,editorial
+https://bloomberg.com,Bloomberg,editorial
+https://apartamentomagazine.com,Apartamento,editorial
+https://gq.com,GQ,editorial
+https://dazeddigital.com,Dazed,editorial
+https://mailchimp.com,Mailchimp,hand_drawn
+https://duolingo.com,Duolingo,hand_drawn
+https://headspace.com,Headspace,hand_drawn
+https://oatly.com,Oatly,hand_drawn
+https://frankchimero.com,Frank Chimero,hand_drawn
+https://craigmod.com,Craig Mod,hand_drawn
+https://calm.com,Calm,hand_drawn
+https://slack.com,Slack,hand_drawn
+https://webflow.com,Webflow,hand_drawn
+https://airbnb.com,Airbnb,hand_drawn
+https://patagonia.com,Patagonia,hand_drawn
+https://innocentdrinks.co.uk,Innocent Drinks,hand_drawn
+https://method.com,Method,hand_drawn
+https://ello.co,Ello,hand_drawn
+https://houseofvans.com,House of Vans,hand_drawn
+https://spotify.com,Spotify,retro
+https://polaroid.com,Polaroid,retro
+https://nike.com,Nike,retro
+https://casetify.com,Casetify,retro
+https://familyabc.com,Family,retro
+https://buckdesign.com,Buck,retro
+https://butter.nyc,Butter,retro
+https://igloo.inc,Igloo,retro
+https://levis.com,Levi's,retro
+https://converse.com,Converse,retro
+https://vinyl.com,Vinyl,retro
+https://8bitcafe.com,8-Bit Cafe,retro
+https://freshjuiceparty.com,Fresh Juice Party,retro
+https://pizzahut.com,Pizza Hut,retro
+https://tacobell.com,Taco Bell,retro
+https://trello.com,Trello,flat
+https://asana.com,Asana,flat
+https://dropbox.com,Dropbox,flat
+https://wunderlist.com,Wunderlist,flat
+https://mailbox.io,Mailbox,flat
+https://evernote.com,Evernote,flat
+https://buffer.com,Buffer,flat
+https://intercom.com,Intercom,flat
+https://zendesk.com,Zendesk,flat
+https://hubspot.com,HubSpot,flat
+https://freshbooks.com,FreshBooks,flat
+https://wave.com,Wave,flat
+https://xero.com,Xero,flat
+https://canva.com,Canva,flat
+https://typeform.com,Typeform,flat
+https://vercel.com,Vercel,bento
+https://framer.com,Framer,bento
+https://notion.so,Notion,bento
+https://bento.me,Bento,bento
+https://cron.com,Cron,bento
+https://supabase.com,Supabase,bento
+https://clerk.com,Clerk,bento
+https://resend.com,Resend,bento
+https://planetscale.com,PlanetScale,bento
+https://railway.app,Railway,bento
+https://neon.tech,Neon,bento
+https://linktree.com,Linktree,bento
+https://posthog.com,PostHog,bento
+https://retool.com,Retool,bento
+https://mux.com,Mux,bento
+https://figma.com,Figma,minimalism
+https://adobe.com,Adobe,flat
+https://squarespace.com,Squarespace,minimalism
+https://shopify.com,Shopify,flat
+https://github.com,GitHub,minimalism
+https://discord.com,Discord,flat
+https://twitch.tv,Twitch,flat
+https://reddit.com,Reddit,flat
+https://pinterest.com,Pinterest,editorial
+https://behance.net,Behance,editorial
+https://dribbble.com,Dribbble,editorial
+https://awwwards.com,Awwwards,minimalism
+https://producthunt.com,Product Hunt,flat
+https://ycombinator.com,Y Combinator,minimalism
+https://openai.com,OpenAI,minimalism
+https://anthropic.com,Anthropic,minimalism
+https://perplexity.ai,Perplexity,minimalism
+https://midjourney.com,Midjourney,minimalism
+https://runwayml.com,Runway,minimalism
+https://lovable.dev,Lovable,bento
+https://replit.com,Replit,bento
+https://warp.dev,Warp,bento
+https://tailwindcss.com,Tailwind CSS,minimalism
+https://vuejs.org,Vue.js,swiss_style
+https://reactjs.org,React,minimalism
+https://nike.com/jordan,Jordan,retro
+https://glossier.com,Glossier,minimalism
+https://away.com,Away,minimalism
+https://allbirds.com,Allbirds,minimalism
+https://casper.com,Casper,flat
+https://harrys.com,Harry's,flat
+https://warbyparker.com,Warby Parker,minimalism
+https://mejuri.com,Mejuri,minimalism
+https://outdoorvoices.com,Outdoor Voices,minimalism
+https://rapha.cc,Rapha,editorial
+https://patta.nl,Patta,brutalism_neobrutalism
+https://ssense.com,SSENSE,brutalism_neobrutalism
+https://endclothing.com,END.,minimalism
+https://carhartt-wip.com,Carhartt WIP,retro
+https://stussy.com,Stussy,retro
+https://supreme.com,Supreme,brutalism_neobrutalism
+https://offwhite.com,Off-White,brutalism_neobrutalism
+https://acnestudios.com,Acne Studios,minimalism
+https://cos.com/en_usd,COS US,minimalism
+https://arket.com,Arket,minimalism
+https://our-legacy.com,Our Legacy,minimalism
+https://margielaparfums.com,Maison Margiela,brutalism_neobrutalism
+https://loewe.com,Loewe,editorial
+https://jacquemus.com,Jacquemus,editorial
+https://celine.com,Celine,minimalism
+https://gucci.com,Gucci,brutalism_neobrutalism
+https://versace.com,Versace,retro
+https://diesel.com,Diesel,brutalism_neobrutalism
+https://heron-preston.com,Heron Preston,brutalism_neobrutalism
+https://amiparis.com,Ami Paris,minimalism
+https://jwanderson.com,JW Anderson,editorial
+https://drmartens.com,Dr. Martens,retro
+https://vans.com,Vans,retro
+https://newbalance.com,New Balance,retro
+https://asics.com,Asics,flat
+https://onrunning.com,On Running,minimalism
+https://lululemon.com,Lululemon,minimalism
+https://gymshark.com,Gymshark,flat
+https://fabletics.com,Fabletics,flat
+https://sonos.com,Sonos,minimalism
+https://bang-olufsen.com,Bang & Olufsen,minimalism
+https://dyson.com,Dyson,minimalism
+https://tesla.com,Tesla,minimalism
+https://rivian.com,Rivian,minimalism
+https://polestar.com,Polestar,minimalism
+https://ge.com,GE,swiss_style
+https://ibm.com,IBM,swiss_style
+https://microsoft.com,Microsoft,flat
+https://google.com,Google,flat
+https://airtable.com,Airtable,flat
+https://coda.io,Coda,flat
+https://miro.com,Miro,flat
+https://loom.com,Loom,flat
+https://calendly.com,Calendly,flat
+https://zapier.com,Zapier,flat
+https://mixpanel.com,Mixpanel,bento
+https://amplitude.com,Amplitude,bento
+https://segment.com,Segment,bento
+https://datadoghq.com,Datadog,bento
+https://grafana.com,Grafana,bento
+https://sentry.io,Sentry,bento
+https://twilio.com,Twilio,minimalism
+https://plaid.com,Plaid,minimalism
+https://brex.com,Brex,bento
+https://ramp.com,Ramp,bento
+https://mercury.com,Mercury,minimalism
+https://wise.com,Wise,flat
+https://revolut.com,Revolut,flat
+https://n26.com,N26,minimalism
+https://monzo.com,Monzo,flat
+https://robinhood.com,Robinhood,minimalism
+https://coinbase.com,Coinbase,flat
+https://kraken.com,Kraken,editorial
+https://gitlab.com,GitLab,flat
+https://atlassian.com,Atlassian,flat
+https://jetbrains.com,JetBrains,flat
+https://postman.com,Postman,flat
+https://docker.com,Docker,flat
+https://cloudflare.com,Cloudflare,minimalism
+https://fly.io,Fly.io,bento
+https://render.com,Render,bento
+https://digitalocean.com,DigitalOcean,flat
+https://heroku.com,Heroku,flat
+https://algolia.com,Algolia,bento
+https://elastic.co,Elastic,flat
+https://mongodb.com,MongoDB,flat
+https://redis.io,Redis,flat
+https://prisma.io,Prisma,bento
+https://astro.build,Astro,bento
+https://svelte.dev,Svelte,minimalism
+https://solidjs.com,SolidJS,minimalism
+https://nextjs.org,Next.js,minimalism
+https://remix.run,Remix,minimalism
+https://deno.com,Deno,minimalism
+https://bun.sh,Bun,minimalism
+https://zig-lang.org,Zig,minimalism
+https://rust-lang.org,Rust,minimalism
+https://golang.org,Go,minimalism
+https://framer.university,Framer University,bento
+https://readymag.com,Readymag,editorial
+https://cargo.site,Cargo,minimalism
+https://format.com,Format,editorial
+https://squarespace.com/portfolio,Squarespace Portfolio,minimalism
+https://unfold.co,Unfold,editorial
+https://issuu.com,Issuu,editorial
+https://medium.com,Medium,editorial
+https://substack.com,Substack,editorial
+https://ghost.org,Ghost,minimalism
+https://buttondown.email,Buttondown,minimalism
+https://beehiiv.com,beehiiv,flat
+https://convertkit.com,ConvertKit,flat
+https://klaviyo.com,Klaviyo,flat
+https://tate.org.uk,Tate,constructivism
+https://designmuseum.org,Design Museum London,constructivism
+https://barbican.org.uk,Barbican,constructivism
+https://walkerart.org,Walker Art Center,constructivism
+https://stedelijk.nl,Stedelijk Museum,constructivism
+https://vam.ac.uk,V&A Museum,constructivism
+https://guggenheim.org,Guggenheim,constructivism
+https://whitney.org,Whitney Museum,constructivism
+https://serpentinegalleries.org,Serpentine Galleries,constructivism
+https://ica.art,ICA London,constructivism
+https://thefader.com,The Fader,brutalism_neobrutalism
+https://highsnobiety.com,Highsnobiety,brutalism_neobrutalism
+https://complex.com,Complex,brutalism_neobrutalism
+https://rickowens.eu,Rick Owens,brutalism_neobrutalism
+https://comme-des-garcons.com,Comme des Garcons,brutalism_neobrutalism
+https://undercoverism.com,Undercover,brutalism_neobrutalism
+https://sbb.ch,SBB,swiss_style
+https://ubs.com,UBS,swiss_style
+https://swatch.com,Swatch,swiss_style
+https://victorinox.com,Victorinox,swiss_style
+https://logitech.com,Logitech,swiss_style
+https://braun.com,Braun,swiss_style
+https://rolex.com,Rolex,swiss_style
+https://coca-cola.com,Coca-Cola,retro
+https://budweiser.com,Budweiser,retro
+https://harley-davidson.com,Harley-Davidson,retro
+https://vespa.com,Vespa,retro
+https://fender.com,Fender,retro
+https://gibson.com,Gibson,retro
+https://crayola.com,Crayola,retro
+https://hatchshowprint.com,Hatch Show Print,retro
+https://etsy.com,Etsy,hand_drawn
+https://benjerry.com,Ben & Jerry's,hand_drawn
+https://traderjoes.com,Trader Joe's,hand_drawn
+https://moleskine.com,Moleskine,hand_drawn
+https://fieldnotesbrand.com,Field Notes,hand_drawn
+https://blueapron.com,Blue Apron,hand_drawn
+https://chobani.com,Chobani,hand_drawn
