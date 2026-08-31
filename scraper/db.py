@@ -1,5 +1,7 @@
 """SQLite storage for the corpus: one row per image + its provenance metadata."""
 
+from __future__ import annotations  # `str | None` etc. need this on Python <3.10
+
 import sqlite3
 import sys
 from pathlib import Path
