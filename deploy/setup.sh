@@ -62,22 +62,36 @@ sudo systemctl daemon-reload
 sudo systemctl enable tastemap
 sudo systemctl restart tastemap
 
-echo "==> installing nginx reverse proxy config"
-# /etc/nginx/conf.d/ is included by the stock nginx.conf on both Debian/Ubuntu
-# and RHEL-family distros, so this one path works everywhere without needing
-# the Debian-specific sites-available/sites-enabled dance.
-sudo cp deploy/nginx-tastemap.conf /etc/nginx/conf.d/tastemap.conf
-sudo rm -f /etc/nginx/sites-enabled/default   # harmless no-op if this dir doesn't exist
-sudo nginx -t
-sudo systemctl enable nginx
-sudo systemctl restart nginx
+# If certbot has already issued a cert, nginx's config has been rewritten
+# in place by the certbot --nginx plugin (adds the 443 server block + the
+# 80->443 redirect). Overwriting it with our plain-HTTP checked-in version
+# on every redeploy would silently undo TLS every time this script re-runs.
+# Once a cert exists, leave nginx config alone — deploy/nginx-tastemap.conf
+# only matters for the very first (pre-TLS) run.
+CERT_GLOB=(/etc/letsencrypt/live/*/fullchain.pem)
+if [ -e "${CERT_GLOB[0]}" ]; then
+    echo "==> TLS cert already present (${CERT_GLOB[0]}) — leaving nginx config as certbot set it up"
+    sudo nginx -t
+    sudo systemctl reload nginx
+else
+    echo "==> installing nginx reverse proxy config (HTTP only, pre-TLS)"
+    # /etc/nginx/conf.d/ is included by the stock nginx.conf on both Debian/Ubuntu
+    # and RHEL-family distros, so this one path works everywhere without needing
+    # the Debian-specific sites-available/sites-enabled dance.
+    sudo cp deploy/nginx-tastemap.conf /etc/nginx/conf.d/tastemap.conf
+    sudo rm -f /etc/nginx/sites-enabled/default   # harmless no-op if this dir doesn't exist
+    sudo nginx -t
+    sudo systemctl enable nginx
+    sudo systemctl restart nginx
+fi
 
 if [ "$PKG_MANAGER" = "dnf" ]; then
     echo "==> Oracle Linux specifics: firewalld + SELinux"
     if systemctl is-active --quiet firewalld; then
         sudo firewall-cmd --permanent --add-service=http
+        sudo firewall-cmd --permanent --add-service=https
         sudo firewall-cmd --reload
-        echo "    opened port 80 in firewalld"
+        echo "    opened ports 80 + 443 in firewalld"
     fi
     if command -v setsebool >/dev/null 2>&1; then
         sudo setsebool -P httpd_can_network_connect 1
@@ -93,5 +107,5 @@ echo
 echo "visit: http://$(curl -s ifconfig.me)/"
 echo
 echo "NOTE: this only opens the OS-level firewall (firewalld/ufw)."
-echo "You still need the Oracle Cloud Security List ingress rule for port 80"
-echo "(0.0.0.0/0 -> TCP 80) — see the earlier setup instructions if not done."
+echo "You still need Oracle Cloud Security List ingress rules for TCP 80"
+echo "and TCP 443 (0.0.0.0/0) — see the earlier setup instructions if not done."
