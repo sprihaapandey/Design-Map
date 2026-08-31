@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TASTEMAP</title>
+<style>
+  :root {
+    --pink: #ff2e93;
+    --yellow: #ffe600;
+    --blue: #1b3de6;
+    --lime: #c4ff00;
+    --orange: #ff6b00;
+    --purple: #8c1eff;
+    --skyblue: #7fd8ff;
+    --black: #0a0a0a;
+    --white: #fff9f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--white);
+    background-image:
+      radial-gradient(circle at 8% 15%, var(--lime) 0, transparent 16%),
+      radial-gradient(circle at 92% 10%, var(--pink) 0, transparent 15%),
+      radial-gradient(circle at 85% 85%, var(--blue) 0, transparent 17%),
+      radial-gradient(circle at 5% 90%, var(--yellow) 0, transparent 15%);
+    background-attachment: fixed;
+    font-family: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--black);
+    min-height: 100vh;
+  }
+
+  ::selection { background: var(--pink); color: var(--white); }
+
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    background: var(--black);
+    border: 5px solid var(--black);
+    box-shadow: 8px 8px 0 var(--pink);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    transform: rotate(-0.3deg);
+    position: relative;
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(48px, 9vw, 110px);
+    line-height: 0.85;
+    letter-spacing: -2px;
+    color: var(--yellow);
+    text-shadow: 4px 4px 0 var(--pink);
+    text-transform: uppercase;
+  }
+  header .tag {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--lime);
+    border: 3px solid var(--black);
+    color: var(--black);
+    font-weight: 900;
+    padding: 6px 14px;
+    transform: rotate(1deg);
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- SEARCH ---------- */
+  .search-panel {
+    background: var(--blue);
+    border: 5px solid var(--black);
+    box-shadow: 7px 7px 0 var(--black);
+    padding: 24px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #query {
+    flex: 1 1 420px;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 16px 18px;
+    border: 4px solid var(--black);
+    background: var(--white);
+    color: var(--black);
+    outline: none;
+  }
+  #query::placeholder { color: #999; font-weight: 700; }
+  #search-btn {
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    background: var(--yellow);
+    border: 4px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    cursor: pointer;
+    transition: transform 0.08s ease;
+  }
+  #search-btn:hover { background: var(--lime); }
+  #search-btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--black); }
+
+  .alpha-row {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  .alpha-row input[type=range] { flex: 1; accent-color: var(--pink); height: 6px; }
+  .meta-line {
+    flex: 1 1 100%;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    min-height: 18px;
+  }
+  .meta-line .brand-chip {
+    display: inline-block;
+    background: var(--pink);
+    border: 2px solid var(--black);
+    color: var(--white);
+    padding: 2px 8px;
+    margin-right: 6px;
+    font-weight: 900;
+    transform: rotate(-1deg);
+  }
+
+  /* ---------- AXIS SLIDERS ---------- */
+  .axes-panel {
+    background: var(--skyblue);
+    border: 5px solid var(--black);
+    box-shadow: 7px 7px 0 var(--black);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .axes-panel h2 {
+    margin: 0 0 16px;
+    color: var(--black);
+    font-size: 22px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--white);
+  }
+  .axes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .axis-control label {
+    display: flex;
+    justify-content: space-between;
+    color: var(--black);
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 4px 10px;
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .axis-control input[type=range] { width: 100%; accent-color: var(--blue); }
+
+  /* ---------- TOGGLE ---------- */
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .view-toggle button {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: 3px solid var(--black);
+    background: var(--white);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .view-toggle button.active { background: var(--lime); }
+  .view-toggle button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--black); }
+
+  /* ---------- RESULTS GRID ---------- */
+  #results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 26px;
+  }
+  .card {
+    background: var(--white);
+    border: 4px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    overflow: hidden;
+  }
+  .card:nth-child(3n+1) { transform: rotate(-0.8deg); }
+  .card:nth-child(3n+2) { transform: rotate(0.6deg); }
+  .card:nth-child(3n)   { transform: rotate(-0.3deg); }
+  .card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 9px 9px 0 var(--pink);
+    z-index: 5;
+  }
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-bottom: 4px solid var(--black);
+  }
+  .card .card-body { padding: 10px 12px; }
+  .card .brand {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    background: var(--yellow);
+    display: inline-block;
+    padding: 2px 6px;
+    border: 2px solid var(--black);
+    margin-bottom: 6px;
+  }
+  .card .score-bar {
+    height: 10px;
+    background: #eee;
+    border: 2px solid var(--black);
+    overflow: hidden;
+  }
+  .card .score-bar-fill { height: 100%; background: var(--blue); }
+  .card .score-label { font-size: 11px; font-weight: 700; margin-top: 4px; }
+
+  /* ---------- MAP ---------- */
+  #map-wrap {
+    display: none;
+    background: var(--yellow);
+    border: 5px solid var(--black);
+    box-shadow: 7px 7px 0 var(--black);
+    padding: 12px;
+  }
+  #map-canvas { width: 100%; height: 640px; display: block; background: var(--white); border: 3px solid var(--black); cursor: crosshair; }
+  #map-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: var(--black);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  #map-controls label {
+    color: var(--white);
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #map-controls select {
+    font-weight: 900;
+    font-size: 13px;
+    padding: 5px 8px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    text-transform: capitalize;
+  }
+  #map-hint { color: #ccc; font-size: 12px; font-weight: 700; font-style: italic; }
+  #map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--black);
+  }
+  #map-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  #map-legend .swatch { width: 12px; height: 12px; border: 2px solid var(--white); flex-shrink: 0; }
+
+  /* ---------- DETAIL MODAL ---------- */
+  #modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,10,10,0.75);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #modal {
+    background: var(--white);
+    border: 5px solid var(--black);
+    box-shadow: 9px 9px 0 var(--purple);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+  }
+  #modal img { width: 100%; border: 3px solid var(--black); margin-bottom: 16px; }
+  #modal h3 { font-size: 28px; text-transform: uppercase; margin: 0 0 4px; }
+  #modal .close-btn {
+    float: right;
+    font-weight: 900;
+    font-size: 20px;
+    background: var(--pink);
+    color: var(--white);
+    border: 3px solid var(--black);
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  #explore-panel { background: var(--lime); border: 3px solid var(--black); padding: 16px; margin-top: 16px; }
+  #explore-panel h4 { margin: 0 0 12px; text-transform: uppercase; }
+  .explore-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .explore-row label { width: 110px; font-weight: 900; font-size: 12px; text-transform: uppercase; }
+  .explore-row input[type=range] { flex: 1; accent-color: var(--purple); }
+  #explore-go {
+    margin-top: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: var(--purple);
+    color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    cursor: pointer;
+  }
+
+  #loading { font-weight: 900; text-transform: uppercase; padding: 20px; text-align: center; display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>TasteMap</h1>
+    <div class="tag">a visual search engine for design taste</div>
+  </header>
+
+  <div class="search-panel">
+    <input id="query" type="text" placeholder='try &quot;Linear + Arc + early Stripe&quot; or &quot;playful hand-drawn illustrations&quot;'>
+    <button id="search-btn">Search</button>
+    <div class="alpha-row">
+      <span>raw similarity</span>
+      <input id="alpha" type="range" min="0" max="1" step="0.05" value="0.5">
+      <span>taste similarity</span>
+    </div>
+    <div class="meta-line" id="meta-line"></div>
+  </div>
+
+  <div class="axes-panel">
+    <h2>Nudge the axes</h2>
+    <div class="axes-grid" id="axes-grid"></div>
+  </div>
+
+  <div class="view-toggle">
+    <button id="btn-grid" class="active">Grid</button>
+    <button id="btn-map">Map</button>
+  </div>
+
+  <div id="loading">searching&hellip;</div>
+  <div id="results-grid"></div>
+  <div id="map-wrap">
+    <div id="map-controls">
+      <label>X axis <select id="map-x"></select></label>
+      <label>Y axis <select id="map-y"></select></label>
+      <span id="map-hint"></span>
+    </div>
+    <canvas id="map-canvas"></canvas>
+    <div id="map-legend"></div>
+  </div>
+
+</div>
+
+<div id="modal-overlay">
+  <div id="modal">
+    <button class="close-btn" id="modal-close">&times; close</button>
+    <img id="modal-img" src="">
+    <h3 id="modal-brand"></h3>
+    <div id="modal-axes"></div>
+    <div id="explore-panel">
+      <h4>Nudge this design &amp; re-search</h4>
+      <div id="explore-rows"></div>
+      <button id="explore-go">Re-search from here</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const AXIS_COLORS = {
+  minimalism: '#1b3de6', playfulness: '#ff2e93', luxury: '#8c1eff',
+  technical: '#ff6b00', editorial: '#c4ff00', density: '#ffe600'
+};
+
+let AXES = [];
+let AXIS_RANGES = {};
+let currentResults = [];
+let mapPoints = [];
+
+async function init() {
+  const res = await fetch('/api/axes');
+  const data = await res.json();
+  AXES = data.axes;
+  AXIS_RANGES = data.ranges;
+  buildAxesGrid();
+  buildExploreRows();
+  buildMapControls();
+}
+
+function buildAxesGrid() {
+  const grid = document.getElementById('axes-grid');
+  grid.innerHTML = '';
+  AXES.forEach(axis => {
+    const r = AXIS_RANGES[axis];
+    const div = document.createElement('div');
+    div.className = 'axis-control';
+    div.innerHTML = `
+      <label><span>${axis}</span><span id="val-${axis}">off</span></label>
+      <input type="range" id="slider-${axis}" min="0" max="5" step="0.5" value="0"
+             style="accent-color:${AXIS_COLORS[axis]}">
+    `;
+    grid.appendChild(div);
+  });
+  AXES.forEach(axis => {
+    document.getElementById(`slider-${axis}`).addEventListener('input', e => {
+      document.getElementById(`val-${axis}`).textContent = e.target.value == 0 ? 'off' : e.target.value;
+      debouncedSearch();
+    });
+  });
+}
+
+function axisOverridesParam() {
+  return AXES
+    .map(axis => [axis, document.getElementById(`slider-${axis}`).value])
+    .filter(([, v]) => parseFloat(v) > 0)
+    .map(([axis, v]) => `${axis}:${v}`)
+    .join(',');
+}
+
+let debounceTimer = null;
+function debouncedSearch() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(runSearch, 250);
+}
+
+function buildExploreRows() {
+  const wrap = document.getElementById('explore-rows');
+  wrap.innerHTML = '';
+  AXES.forEach(axis => {
+    const row = document.createElement('div');
+    row.className = 'explore-row';
+    row.innerHTML = `
+      <label>${axis}</label>
+      <input type="range" id="ex-${axis}" min="-3" max="3" step="0.5" value="0">
+      <span id="ex-val-${axis}">0</span>
+    `;
+    wrap.appendChild(row);
+  });
+  AXES.forEach(axis => {
+    document.getElementById(`ex-${axis}`).addEventListener('input', e => {
+      document.getElementById(`ex-val-${axis}`).textContent = e.target.value;
+    });
+  });
+}
+
+async function runSearch() {
+  const q = document.getElementById('query').value.trim();
+  if (!q) return;
+  const alpha = document.getElementById('alpha').value;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('results-grid').innerHTML = '';
+  const overrides = axisOverridesParam();
+  const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&alpha=${alpha}&top_k=48&axis_overrides=${encodeURIComponent(overrides)}`);
+  const data = await res.json();
+  document.getElementById('loading').style.display = 'none';
+  if (data.detail) {
+    document.getElementById('meta-line').textContent = 'error: ' + data.detail;
+    return;
+  }
+  currentResults = data.results;
+  renderMeta(data.matched_brands, data.remaining_text);
+  renderGrid(currentResults);
+}
+
+function renderMeta(brands, remaining) {
+  const el = document.getElementById('meta-line');
+  let html = '';
+  brands.forEach(b => html += `<span class="brand-chip">${b}</span>`);
+  if (remaining) html += ` + "${remaining}"`;
+  el.innerHTML = html;
+}
+
+function renderGrid(results) {
+  const grid = document.getElementById('results-grid');
+  grid.innerHTML = '';
+  results.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const pct = Math.round(r.score * 100);
+    card.innerHTML = `
+      <img src="/img/${r.image_id}.png" loading="lazy">
+      <div class="card-body">
+        <div class="brand">${r.brand_name || r.image_id.slice(0,18)}</div>
+        <div class="score-bar"><div class="score-bar-fill" style="width:${pct}%"></div></div>
+        <div class="score-label">match ${pct}%</div>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(r));
+    grid.appendChild(card);
+  });
+}
+
+function openModal(r) {
+  document.getElementById('modal-overlay').style.display = 'flex';
+  document.getElementById('modal-img').src = `/img/${r.image_id}.png`;
+  document.getElementById('modal-brand').textContent = r.brand_name || r.image_id;
+  const axesHtml = AXES.map(a => `
+    <div style="margin-bottom:6px;">
+      <strong style="text-transform:uppercase;font-size:12px;">${a}</strong>:
+      <span style="background:${AXIS_COLORS[a]};color:#fff;padding:2px 8px;border:2px solid #000;font-weight:900;">${r.axis_scores[a]}</span>
+    </div>
+  `).join('');
+  document.getElementById('modal-axes').innerHTML = axesHtml;
+  document.getElementById('modal').dataset.imageId = r.image_id;
+  AXES.forEach(axis => {
+    document.getElementById(`ex-${axis}`).value = 0;
+    document.getElementById(`ex-val-${axis}`).textContent = '0';
+  });
+}
+
+document.getElementById('modal-close').addEventListener('click', () => {
+  document.getElementById('modal-overlay').style.display = 'none';
+});
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target.id === 'modal-overlay') document.getElementById('modal-overlay').style.display = 'none';
+});
+
+document.getElementById('explore-go').addEventListener('click', async () => {
+  const imageId = document.getElementById('modal').dataset.imageId;
+  const deltas = {};
+  AXES.forEach(axis => {
+    const v = parseFloat(document.getElementById(`ex-${axis}`).value);
+    if (v !== 0) deltas[axis] = v;
+  });
+  const alpha = document.getElementById('alpha').value;
+  document.getElementById('loading').style.display = 'block';
+  const res = await fetch('/api/explore', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({image_id: imageId, deltas, alpha: parseFloat(alpha), top_k: 48})
+  });
+  const data = await res.json();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('modal-overlay').style.display = 'none';
+  currentResults = data.results;
+  document.getElementById('meta-line').innerHTML = `<span class="brand-chip">explored from ${imageId}</span>`;
+  renderGrid(currentResults);
+  showGridView();
+});
+
+document.getElementById('search-btn').addEventListener('click', runSearch);
+document.getElementById('query').addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+document.getElementById('alpha').addEventListener('input', debouncedSearch);
+
+function showGridView() {
+  document.getElementById('results-grid').style.display = 'grid';
+  document.getElementById('map-wrap').style.display = 'none';
+  document.getElementById('btn-grid').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+}
+function showMapView() {
+  document.getElementById('results-grid').style.display = 'none';
+  document.getElementById('map-wrap').style.display = 'block';
+  document.getElementById('btn-grid').classList.remove('active');
+  document.getElementById('btn-map').classList.add('active');
+  drawMap();
+}
+document.getElementById('btn-grid').addEventListener('click', showGridView);
+document.getElementById('btn-map').addEventListener('click', showMapView);
+
+const STYLE_COLORS = {
+  minimalism: '#1b3de6', flat: '#ffe600', bento: '#c4ff00', editorial: '#ff2e93',
+  swiss_style: '#8c1eff', retro: '#ff6b00', hand_drawn: '#00c2a8', constructivism: '#e6001b',
+  brutalism_neobrutalism: '#000000'
+};
+
+function buildMapControls() {
+  const opts = [...AXES, 'umap'];
+  const labelFor = v => v === 'umap' ? 'Visual similarity (UMAP)' : v;
+  ['map-x', 'map-y'].forEach(id => {
+    const sel = document.getElementById(id);
+    sel.innerHTML = opts.map(v => `<option value="${v}">${labelFor(v)}</option>`).join('');
+  });
+  document.getElementById('map-x').value = 'minimalism';
+  document.getElementById('map-y').value = 'playfulness';
+  document.getElementById('map-x').addEventListener('change', drawMap);
+  document.getElementById('map-y').addEventListener('change', drawMap);
+
+  const legend = document.getElementById('map-legend');
+  legend.innerHTML = Object.entries(STYLE_COLORS).map(([style, color]) => `
+    <div class="legend-item"><span class="swatch" style="background:${color}"></span>${style.replace(/_/g, ' ')}</div>
+  `).join('') + `<div class="legend-item"><span class="swatch" style="background:#999"></span>uncategorized (not part of the 9 curated style buckets)</div>`;
+}
+
+async function drawMap() {
+  if (mapPoints.length === 0) {
+    const res = await fetch('/api/map');
+    const data = await res.json();
+    mapPoints = data.points;
+  }
+  const xChoice = document.getElementById('map-x').value;
+  const yChoice = document.getElementById('map-y').value;
+  document.getElementById('map-hint').textContent =
+    (xChoice === 'umap' || yChoice === 'umap')
+      ? 'UMAP: nearby points look visually similar overall — the axes themselves have no fixed meaning.'
+      : 'each point is one design, plotted by its actual axis scores (1–5). color = style category.';
+
+  const canvas = document.getElementById('map-canvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, rect.width, rect.height);
+
+  const padL = 56, padB = 44, padT = 16, padR = 16;
+  const plotW = rect.width - padL - padR;
+  const plotH = rect.height - padT - padB;
+
+  const xIsAxis = xChoice !== 'umap';
+  const yIsAxis = yChoice !== 'umap';
+
+  const rawX = p => xIsAxis ? p.axis_scores[xChoice] : p.umap_x;
+  const rawY = p => yIsAxis ? p.axis_scores[yChoice] : p.umap_y;
+  const xMin = xIsAxis ? 1 : 0, xMax = xIsAxis ? 5 : 1;
+  const yMin = yIsAxis ? 1 : 0, yMax = yIsAxis ? 5 : 1;
+
+  // gridlines + axis labels/ticks (only meaningful for real axes, but draw a
+  // light frame either way so the plot area itself is legible)
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = '#333';
+  ctx.font = '11px Arial';
+  const ticks = xIsAxis || yIsAxis ? [1, 2, 3, 4, 5] : [0, 0.25, 0.5, 0.75, 1];
+  ticks.forEach(t => {
+    if (xIsAxis) {
+      const tx = padL + ((t - xMin) / (xMax - xMin)) * plotW;
+      ctx.beginPath(); ctx.moveTo(tx, padT); ctx.lineTo(tx, padT + plotH); ctx.stroke();
+      ctx.fillText(String(t), tx - 4, padT + plotH + 16);
+    }
+    if (yIsAxis) {
+      const ty = padT + plotH - ((t - yMin) / (yMax - yMin)) * plotH;
+      ctx.beginPath(); ctx.moveTo(padL, ty); ctx.lineTo(padL + plotW, ty); ctx.stroke();
+      ctx.fillText(String(t), padL - 20, ty + 4);
+    }
+  });
+
+  // axis frame
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(padL, padT, plotW, plotH);
+
+  // axis title labels
+  ctx.fillStyle = '#000';
+  ctx.font = 'bold 13px Arial';
+  ctx.save();
+  ctx.translate(16, padT + plotH / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center';
+  ctx.fillText((yIsAxis ? yChoice : 'UMAP dim 2').toUpperCase(), 0, 0);
+  ctx.restore();
+  ctx.textAlign = 'center';
+  ctx.fillText((xIsAxis ? xChoice : 'UMAP dim 1').toUpperCase(), padL + plotW / 2, rect.height - 8);
+
+  mapPoints.forEach(p => {
+    const x = padL + ((rawX(p) - xMin) / (xMax - xMin)) * plotW;
+    const y = padT + plotH - ((rawY(p) - yMin) / (yMax - yMin)) * plotH;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = STYLE_COLORS[p.style_tag] || '#999';
+    ctx.fill();
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = '#000';
+    ctx.stroke();
+    p._sx = x; p._sy = y;
+  });
+
+  canvas.onclick = (e) => {
+    const r = canvas.getBoundingClientRect();
+    const mx = e.clientX - r.left, my = e.clientY - r.top;
+    let closest = null, closestDist = Infinity;
+    mapPoints.forEach(p => {
+      const d = Math.hypot(p._sx - mx, p._sy - my);
+      if (d < closestDist) { closestDist = d; closest = p; }
+    });
+    if (closest && closestDist < 20) {
+      fetch(`/api/image/${closest.image_id}`).then(r => r.json()).then(info => {
+        openModal({...info, score: 1, image_id: closest.image_id});
+      });
+    }
+  };
+}
+
+init();
+</script>
+</body>
+</html>
