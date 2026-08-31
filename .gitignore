@@ -3,14 +3,6 @@
 __pycache__/
 *.pyc
 
-# Data (images, DB, cached embeddings — not committed, regenerable via scripts)
-data/images/*
-!data/images/.gitkeep
-data/cache/*
-!data/cache/.gitkeep
-data/*.db
-data/*.npy
-
 # Env
 .env
 
