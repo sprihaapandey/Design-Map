@@ -4,6 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
+# setup.sh overwrites this line with whatever user actually ran it
+# (opc on Oracle Linux, ubuntu on Canonical images) — 'ubuntu' here is just
+# the checked-in default if this file is ever installed by hand instead.
 User=ubuntu
 WorkingDirectory=/opt/tastemap
 Environment=PYTHONUNBUFFERED=1
