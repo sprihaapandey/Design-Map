@@ -24,8 +24,13 @@ from pathlib import Path
 
 import joblib
 import numpy as np
-import open_clip
-import torch
+
+# torch/open_clip are NOT imported at module level on purpose — they cost
+# 300MB+ of RAM just to import, before any model is even loaded. On a
+# memory-constrained deploy target (e.g. Render's free 512MB tier) that cost
+# alone was enough to OOM-kill the process during startup, before uvicorn
+# ever bound a port. Deferred into _load_clip() so brand-only queries (the
+# common case, and the plan's own headline example) never pay for it at all.
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import AXES, CACHE_DIR, CLIP_MODEL_NAME, CLIP_PRETRAINED
@@ -80,6 +85,8 @@ class QueryEngine:
 
     def _load_clip(self):
         if self._clip_model is None:
+            import open_clip  # deferred — see module-level comment
+
             model, _, _ = open_clip.create_model_and_transforms(CLIP_MODEL_NAME, pretrained=CLIP_PRETRAINED)
             self._clip_model = model.eval()
             self._clip_tokenizer = open_clip.get_tokenizer(CLIP_MODEL_NAME)
@@ -141,6 +148,8 @@ Respond with ONLY JSON: {{"brands": [...], "remaining_text": "..."}}"""
         return brands, data.get("remaining_text", "").strip()
 
     def encode_text(self, text: str) -> np.ndarray:
+        import torch  # deferred — see module-level comment
+
         model, tokenizer = self._load_clip()
         with torch.no_grad():
             tokens = tokenizer([text])

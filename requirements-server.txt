@@ -1,0 +1,15 @@
+# Runtime deps for api/server.py only — NOT the full dev environment.
+# Deliberately excludes playwright, transformers, pandas, tqdm, pillow,
+# python-dotenv, google-genai: none of those are on the request-serving
+# path (see api/server.py, api/query.py, labeling/db.py, scraper/db.py,
+# config.py import list). Keeping this list minimal matters on a
+# memory/disk-constrained host — every unused package is dead weight.
+
+fastapi
+uvicorn[standard]
+pydantic
+numpy
+scikit-learn
+joblib
+torch
+open_clip_torch
